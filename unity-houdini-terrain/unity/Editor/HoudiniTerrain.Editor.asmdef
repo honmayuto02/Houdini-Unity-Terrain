@@ -1,0 +1,4 @@
+{
+  "name": "HoudiniTerrain.Editor",
+  "includePlatforms": ["Editor"]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "com.yourname.houdini-terrain",
+  "version": "0.1.0",
+  "displayName": "Houdini Terrain Importer",
+  "description": "Builds TerrainData from Houdini .r16 + .json exports.",
+  "unity": "2026.6"
+}
