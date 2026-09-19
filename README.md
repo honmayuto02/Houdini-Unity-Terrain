@@ -1,4 +1,4 @@
-# unity-houdini-terrain
+# Houdini-Unity-Terrain
 
 Houdini で作ったハイトフィールド（高さの地形データ）を、ボタン1つで Unity の Terrain に取り込むためのツールです。Houdini Apprentice 版での利用を想定しています。
 
@@ -17,12 +17,35 @@ Houdini 側の HDA は `.hdanc` 形式なので、Apprentice 版と Non-Commerci
 
 ```text
 Houdini-Unity-Terrain/
-  houdini/
-    otls/unity_hf_export.hdanc             Export ボタン付きのノード（HDA）
-    python/hf_export.py                    書き出し処理の本体
-    unity_terrain.json.template            Houdini パッケージ設定のひな形
-  unity/com.honmayuto02.houdini-terrain/   Unity パッケージ
+  README.md
+  LICENSE                                   MIT License
+  .gitignore
+  houdini/                                  Houdini パッケージとして読み込むフォルダ
+    otls/
+      unity_hf_export.hdanc                 Export ボタン付きのノード（HDA）
+    python/
+      hf_export.py                          書き出し処理の本体
+    unity_terrain.json.template             Houdini パッケージ設定のひな形
+  unity/
+    com.honmayuto02.houdini-terrain/        Unity パッケージ
+      package.json                          パッケージの名前とバージョン
+      Editor/
+        HoudiniTerrain.Editor.asmdef        Editor 専用のアセンブリ定義
+        HoudiniTerrainPostprocessor.cs      .r16 と .json から TerrainData を作る処理とメニュー
 ```
+
+各ファイルの役割は次のとおりです。
+
+| ファイル | 役割 |
+|---|---|
+| `unity_hf_export.hdanc` | Unity Heightfield Export ノード。Export ボタンで `hf_export.export_from_parms` を呼ぶ |
+| `hf_export.py` | ハイトフィールドの `height` レイヤーを読み出し、`.r16` と `.json` に書き出す |
+| `unity_terrain.json.template` | Houdini パッケージの設定。`hf_export.py` の場所を `PYTHONPATH` に、HDA の場所を Houdini のパスに加える |
+| `package.json` | Unity パッケージの名前、バージョン、対応する Unity のバージョン |
+| `HoudiniTerrain.Editor.asmdef` | パッケージのスクリプトを Editor 専用のアセンブリにする |
+| `HoudiniTerrainPostprocessor.cs` | `.r16` と `.json` のペアを検知して TerrainData を作成、更新する。Place In Scene と Rebuild All のメニューもここにある |
+
+Unity パッケージの中にある `.meta` ファイルは、Unity が生成したものです。フォルダやファイルの GUID を保持しているので、削除したり作り直したりしないでください。
 
 ## インストール
 
