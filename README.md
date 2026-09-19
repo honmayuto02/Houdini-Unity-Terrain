@@ -58,7 +58,7 @@ Houdini-Unity-Terrain/
    import hf_export; print(hf_export.__file__)
    ```
 
-書き出し先を毎回入力するのが面倒な場合は、`env` に `{ "UNITY_TERRAIN_OUT": "C:/UnityProjects/MyGame/Assets/Terrains" }` を追加しておくと、Export ノードの書き出し先の初期値になります。
+書き出し先を毎回入力するのが面倒な場合は、`env` に `{ "UNITY_TERRAIN_OUT": "C:/UnityProjects/MyGame/Assets/Terrains" }` を追加しておくと、OUT_Directory の初期値になります。
 
 ### Unity
 
@@ -77,15 +77,15 @@ Houdini-Unity-Terrain/
 ### Houdini で書き出す
 
 1. ハイトフィールドのネットワークの最後で Tab キーを押し、Unity Heightfield Export を置いて、最後のノードの出力をつなぎます。
-2. Output Dir に、Unity プロジェクトの `Assets` フォルダの中の場所を指定します。例 `C:/UnityProjects/MyGame/Assets/Terrains`
-3. Name に出力ファイル名を入れます。初期値は hip ファイル名です。
+2. OUT_Directory に、Unity プロジェクトの `Assets` フォルダの中の場所を指定します。例 `C:/UnityProjects/MyGame/Assets/Terrains`
+3. OUT_Name に出力ファイル名を入れます。初期値は hip ファイル名です。
 4. Export を押します。
 
-成功すると、書き出したファイルのパスと高さの範囲がダイアログに表示され、`<Name>.r16` と `<Name>.json` の2つのファイルが作られます。
+成功すると、書き出したファイルのパスと高さの範囲がダイアログに表示され、`<OUT_Name>.r16` と `<OUT_Name>.json` の2つのファイルが作られます。
 
 ### Unity で取り込む
 
-Unity のウィンドウに切り替えると、Unity がファイルを取り込み、同じフォルダに `<Name>.asset`（TerrainData）が作られます。
+Unity のウィンドウに切り替えると、Unity がファイルを取り込み、同じフォルダに `<OUT_Name>.asset`（TerrainData）が作られます。
 
 初回だけ、Project ウィンドウでこの `.asset` を右クリックし、Houdini Terrain → Place In Scene を選んでください。Houdini と同じ位置に Terrain が配置されます。
 
