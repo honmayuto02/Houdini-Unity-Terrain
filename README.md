@@ -20,7 +20,6 @@ Houdini-Unity-Terrain/
   houdini/
     otls/unity_hf_export.hdanc             Export ボタン付きのノード（HDA）
     python/hf_export.py                    書き出し処理の本体
-    scripts/run_export.py                  hython から書き出すスクリプト
     unity_terrain.json.template            Houdini パッケージ設定のひな形
   unity/com.honmayuto02.houdini-terrain/   Unity パッケージ
 ```
@@ -91,21 +90,6 @@ Unity のウィンドウに切り替えると、Unity がファイルを取り�
 初回だけ、Project ウィンドウでこの `.asset` を右クリックし、Houdini Terrain → Place In Scene を選んでください。Houdini と同じ位置に Terrain が配置されます。
 
 2回目以降は、Houdini で Export を押して Unity に切り替えるだけで、シーンに置いた Terrain の形と位置が更新されます。
-
-### hython から書き出す
-
-Houdini の画面を開かずに、コマンドラインから書き出すこともできます。Houdini のインストール先の `bin` フォルダにある hython を使います。`hf_export` を読み込めるように、先に `PYTHONPATH` に `houdini/python` を追加しておいてください。
-
-```text
-hython houdini/scripts/run_export.py <hip> <ノードパス> <出力先> <名前>
-```
-
-| 引数 | 意味 |
-|---|---|
-| `<hip>` | 開く hip ファイル |
-| `<ノードパス>` | ハイトフィールドを出力しているノード。例 `/obj/terrain/OUT` |
-| `<出力先>` | 書き出し先のフォルダ。Unity プロジェクトの `Assets` の中を指定する |
-| `<名前>` | 出力ファイル名（拡張子なし） |
 
 ## 地形を作るときの注意
 
