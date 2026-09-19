@@ -23,7 +23,6 @@ Houdini-Unity-Terrain/
     scripts/run_export.py                  hython から書き出すスクリプト
     unity_terrain.json.template            Houdini パッケージ設定のひな形
   unity/com.honmayuto02.houdini-terrain/   Unity パッケージ
-  docs/pipeline.md                         仕組みの詳しい解説
 ```
 
 ## インストール
@@ -159,8 +158,6 @@ Terrain の Pixel Error が大きいと、Unity はメッシュを間引いて�
 | `source` | 書き出し元の hip ファイルとノードのパス（記録用） |
 
 Houdini は右手系、Unity は左手系なので、Unity の z は Houdini の z の符号を反転させたものとして扱っています。こうすることで、Houdini で見たとおりの形（鏡像にならない形）で Unity に取り込まれます。
-
-仕組みの詳しい解説は `docs/pipeline.md` にあります。
 
 ## ライセンス
 
