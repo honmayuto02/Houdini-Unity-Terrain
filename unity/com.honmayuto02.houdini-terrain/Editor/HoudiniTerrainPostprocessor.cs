@@ -1,4 +1,3 @@
-// Place under Assets/Editor/
 // Watches <name>.r16 + <name>.json pairs and builds/updates <name>.asset (TerrainData).
 using System.Collections.Generic;
 using System.IO;
@@ -77,6 +76,20 @@ public class HoudiniTerrainPostprocessor : AssetPostprocessor
             EditorSceneManager.MarkSceneDirty(t.gameObject.scene);
         }
         Debug.Log($"[HoudiniTerrain] built {assetPath} (res {r}, range {m.hmax - m.hmin:F3})");
+    }
+
+    [MenuItem("Tools/Houdini Terrain/Rebuild All")]
+    static void RebuildAll()
+    {
+        var targets = new HashSet<string>();
+        foreach (var p in Directory.GetFiles("Assets", "*.r16", SearchOption.AllDirectories))
+        {
+            string b = p.Replace('\\', '/');
+            b = b.Substring(0, b.LastIndexOf('.'));
+            if (File.Exists(b + ".json")) targets.Add(b);
+        }
+        foreach (var b in targets) Build(b);
+        Debug.Log($"[HoudiniTerrain] rebuilt {targets.Count} terrain(s)");
     }
 
     [MenuItem("Assets/Houdini Terrain/Place In Scene")]

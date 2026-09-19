@@ -1,0 +1,7 @@
+{
+  "env": [
+    { "UNITY_TERRAIN_TOOLS": "C:/path/to/unity-houdini-terrain/houdini" },
+    { "PYTHONPATH": { "value": "$UNITY_TERRAIN_TOOLS/python", "method": "prepend" } }
+  ],
+  "path": "$UNITY_TERRAIN_TOOLS"
+}

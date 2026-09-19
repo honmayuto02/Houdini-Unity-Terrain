@@ -88,6 +88,11 @@ def export(node, out_dir, name):
 def export_from_parms(node):
     """Callback for the Export button on the output node."""
     out_dir = node.evalParm('hf_out_dir')
+    if not out_dir or '$' in out_dir:
+        hou.ui.displayMessage(
+            "Output Dir is empty or contains an unexpanded variable: {!r}".format(out_dir),
+            severity=hou.severityType.Error, title='Heightfield Export')
+        return
     name = node.evalParm('hf_name') or node.name()
     try:
         base, meta = export(node, out_dir, name)
